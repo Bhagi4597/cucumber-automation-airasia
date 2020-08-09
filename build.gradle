@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java:6.4.0'
+    testImplementation 'io.cucumber:cucumber-junit:6.4.0'
+    compile('org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6') {
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-android-driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-iphone-driver'
+        exclude group: 'org.seleniumhq.selenium', module: 'selenium-safari-driver'
+        exclude group: 'org.webbitserver', module: 'webbit'
+        exclude group: 'commons-codec', module: 'commons-codec'
+        exclude group: 'cglib', module: 'cglib-nodep'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
