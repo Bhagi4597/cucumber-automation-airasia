@@ -1,0 +1,18 @@
+sudo: required
+dist: trusty
+language: java
+jdk:
+  - oraclejdk8
+
+script:
+  -  gradle clean test
+before_install:
+  - docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm -e VNC_NO_PASSWORD=1 selenium/standalone-chrome-debug:latest
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
